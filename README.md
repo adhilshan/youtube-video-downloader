@@ -36,11 +36,11 @@ Example Response
 ## Make your demo GET request to
 http://barcode-ytdownloader.vercel.app/api/video-info
 ### Params
-Header Name : package-name
-Header Value : com.example.myapp
+Header Name : package-name <br>
+Header Value : com.example.myapp<br>
 
-Header Name : video-id
-Header Value : dQw4w9WgXcQ
+Header Name : video-id <br>
+Header Value : dQw4w9WgXcQ <br>
 
 ## Deploy To Vercel
 
