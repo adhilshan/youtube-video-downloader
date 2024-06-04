@@ -5,7 +5,7 @@ from pytube import YouTube
 app = Flask(__name__)
 
 # Load API keys from apis.json
-with open('data.json') as f:
+with open(os.path.join(os.path.dirname(__file__), 'data.json')) as f:
     api_keys = json.load(f)['api_keys']
 
 @app.route("/api/video-info", methods=["GET"])
