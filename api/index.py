@@ -5,13 +5,12 @@ from pytube import YouTube
 app = Flask(__name__)
 
 # Load API keys from apis.json
-with open(os.path.join(os.path.dirname(__file__), 'data.json')) as f:
-    api_keys = json.load(f)['api_keys']
+api_keys = ["Alza43knmalidi76sgcn"]
 
 @app.route("/api/video-info", methods=["GET"])
 def get_video_info():
-    video_id = request.headers.get("video-id")
-    api_key = request.headers.get("api-key")
+    video_id = request.headers.get("VIDEO_ID")
+    api_key = request.headers.get("API_KEY")
 
     # Validate the API key
     if api_key not in api_keys:
