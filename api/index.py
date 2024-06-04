@@ -1,16 +1,22 @@
-from flask import Flask, render_template , request, jsonify
+import json
+from flask import Flask, render_template, request, jsonify
 from pytube import YouTube
 
 app = Flask(__name__)
 
-PACKAGE_NAME = "com.example.myapp"
+# Load API keys from apis.json
+with open('config.json') as f:
+    api_keys = json.load(f)['api_keys']
 
 @app.route("/api/video-info", methods=["GET"])
 def get_video_info():
-    package_name = request.headers.get("package-name")
     video_id = request.headers.get("video-id")
-    if package_name!= PACKAGE_NAME:
-        return jsonify({"error": "Unauthorized Access"}), 401
+    api_key = request.headers.get("api-key")
+
+    # Validate the API key
+    if api_key not in api_keys:
+        return jsonify({"error": "Invalid API Key"}), 401
+    
     else:
         downloadUrls = []
         video_url = "https://www.youtube.com/watch?v=" + video_id
